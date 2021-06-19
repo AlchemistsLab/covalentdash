@@ -134,7 +134,7 @@ app.layout = html.Div(
                         html.H6(className="title-header", children="Covalent Vision"),
                         html.P(
                             """
-                            Covalent Dashboard provides portfolio tracking services across chains
+                            Covalent Analytics provides portfolio tracking services across chains
                             """
                         ),
                        
