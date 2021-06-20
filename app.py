@@ -131,7 +131,7 @@ app.layout = html.Div(
                         html.Img(
                             className="logo", src=app.get_asset_url("covalent.png")
                         ),
-                        html.H6(className="title-header", children="Covalent Vision"),
+                        html.H6(className="title-header", children="Covalent Analytics"),
                         html.P(
                             """
                             Covalent Analytics provides portfolio tracking services across chains
@@ -163,6 +163,13 @@ app.layout = html.Div(
                             className="display-inlineblock",
                             children=[
                                 dcc.Input(id="address", placeholder="Enter wallet address...", type="text"),
+                                
+    
+                            ],
+                        ),
+                        html.Div(
+                            className="display-inlineblock",
+                            children=[
                                 dcc.Dropdown(id='chain_id',placeholder="Select Chain", options = [
                                             {"label": "Ethereum", "value": "1"},
                                             {"label": "Matic", "value": "137"},
@@ -173,8 +180,7 @@ app.layout = html.Div(
                                     value=[],
                 
         ),
-    
-                            ],
+                            ]
                         ),
                         html.Div(
                             className="display-inlineblock float-right",
@@ -183,9 +189,10 @@ app.layout = html.Div(
                                 
                             ],
                         ),
-                        html.Div(id='container'),
+                        
                     ],
                 ),
+            html.Div(id='container')
             ],
         ),
        
@@ -224,7 +231,7 @@ def display(value,address):
         data['timestamp']=set_time(data)
 
    
-    return [
+    return html.Div(
 
         dcc.Graph(
             id='graph1',
@@ -234,9 +241,9 @@ def display(value,address):
         dcc.Graph(
             id='graph2',
             figure=fig2(data)
-        ),  
+        )
     
-    ]
+    )
 
 # Dynamic Callbacks
 
