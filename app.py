@@ -184,11 +184,10 @@ app.layout = html.Div(
                                html.Button('Add Wallet', id='btn-1', n_clicks=0)
                                 
                             ],
-                        ),
+                        ), html.Div(id='container')
                         
                     ],
                 ),
-            html.Div(id='container')
             ],
         ),
        
