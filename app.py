@@ -227,7 +227,7 @@ def display(value,address):
         data['timestamp']=set_time(data)
 
    
-    return html.Div(
+    return [
 
         dcc.Graph(
             id='graph1',
@@ -239,7 +239,7 @@ def display(value,address):
             figure=fig2(data)
         )
     
-    )
+    ]
 
 # Dynamic Callbacks
 
