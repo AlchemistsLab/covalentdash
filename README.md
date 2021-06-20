@@ -11,7 +11,7 @@ To run this app first clone repository and then open a terminal to the app folde
 
 ```
 git clone https://github.com/plotly/covalent_dashboard.git
-cd covalent_dashboard
+cd covalent_dashboard/backend
 ```
 
 Create and activate a new virtual environment (recommended) by running
