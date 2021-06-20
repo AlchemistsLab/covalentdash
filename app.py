@@ -163,13 +163,7 @@ app.layout = html.Div(
                             className="display-inlineblock",
                             children=[
                                 dcc.Input(id="address", placeholder="Enter wallet address...", type="text"),
-                                
-    
-                            ],
-                        ),
-                        html.Div(
-                            className="display-inlineblock",
-                            children=[
+
                                 dcc.Dropdown(id='chain_id',placeholder="Select Chain", options = [
                                             {"label": "Ethereum", "value": "1"},
                                             {"label": "Matic", "value": "137"},
@@ -180,8 +174,10 @@ app.layout = html.Div(
                                     value=[],
                 
         ),
-                            ]
-                        ),
+                                
+    
+                            ],
+                        ),         
                         html.Div(
                             className="display-inlineblock float-right",
                             children=[
