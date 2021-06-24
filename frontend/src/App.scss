@@ -1,0 +1,35 @@
+.root {
+  display: flex;
+}
+
+.toolbar {
+  padding-right: 24px;
+}
+
+.content {
+  flex-grow: 1;
+  height: 100vh;
+  overflow: 'auto';
+}
+
+.bg {
+  &--loading {
+    background-color: #000428;
+    background-image: url('https://www.covalenthq.com/static/images/backgrounds/Index-1.jpg');
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.loader {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.logo {
+  height: 32px;
+  margin-left: 7px;
+}
