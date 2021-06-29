@@ -19,8 +19,9 @@ import axios from 'axios';
 import { useSnackbar } from 'notistack';
 
 import './App.scss';
+import useDebounce from './useDebounce';
 import Copyright from './components/copyright';
-import { NETWORK_LABELS } from './constants';
+import { NETWORK_LABELS, COV_COLORS } from './constants';
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -48,6 +49,7 @@ const App = () => {
   const [networkMenuAnchor, setNetworkMenuAnchor] = useState();
   const [selectedNetwork, setSelectedNetwork] = useState('Ethereum');
   const [selectedWallet, setSelectedWallet] = useState();
+  const debouncedTitle = useDebounce(selectedWallet, 300);
   const [isLoading, setIsLoading] = useState();
   // eslint-disable-next-line no-unused-vars
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -57,6 +59,9 @@ const App = () => {
     {
       values: walletData.items.map((item) => item.holdings[0].close.quote),
       labels: walletData.items.map((item) => item.contract_name),
+      marker: {
+        colors: COV_COLORS,
+      },
       type: 'pie',
     },
   ];
@@ -64,6 +69,10 @@ const App = () => {
   const lineChartData = walletData.items.map((item) => ({
     type: 'scatter',
     mode: 'lines',
+    line: {
+      // - 1 to remove half transparent color
+      color: COV_COLORS[Math.floor(Math.random() * (COV_COLORS.length - 1) )],
+    },
     name: item.contract_name,
     x: item.holdings.map((holding) => holding.timestamp),
     y: item.holdings.map((holding) => holding.close.quote),
@@ -104,7 +113,7 @@ const App = () => {
 
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedNetwork, selectedWallet]);
+  }, [selectedNetwork, debouncedTitle]);
 
   const handleWalletChange = (event) => {
     setSelectedWallet(event.target.value);

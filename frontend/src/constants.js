@@ -21,4 +21,6 @@ const NETWORK_LABELS = [
   },
 ];
 
-export { NETWORK_LABELS };
+const COV_COLORS = ['#ff4c8b', '#00d8d5', '#f7f7f7'];
+
+export { NETWORK_LABELS, COV_COLORS };
